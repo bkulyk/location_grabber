@@ -4,8 +4,6 @@ require 'optparse'
 require 'methadone'
 require_relative '../lib/lib_location_grabber'
 
-require 'awesome_print'
-
 class App
 
   include Methadone::Main
