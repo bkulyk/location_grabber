@@ -45,3 +45,9 @@ Feature: My bootstrapped app kinda works
       | <h1>GPS information for files</h1>     |
       | <td>./gps_images/cats/image_e.jpg</td> |
 
+
+  Scenario: Run with --format html and output_file option
+    When I run `location_grabber --output output_file.csv ../../spec/samples`
+    Then the output file "output_file.csv" should exist
+    Then the output should contain "output_file.csv"
+

@@ -13,3 +13,8 @@ Then("the html outputfile should contain:") do |table|
     expect(contents).to include check
   end
 end
+
+Then(/^the output file "([^"]*)" should exist$/) do |file_name|
+  path = File.join "tmp/aruba", file_name
+  expect(File.exists?(path)).to be true
+end
