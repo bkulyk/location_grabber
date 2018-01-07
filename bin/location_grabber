@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require_relative '../lib/lib_location_grabber'
+
+require 'awesome_print'
+
+class App
+
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  version LocationGrabber::VERSION
+  description "🤖  Read GPS data from image exif data for a folder of images"
+
+  arg :path, :optional, "path to folder containing images for which you want to read GPS data"
+
+  on("--format [html|csv]", "sets output format to html") do |value|
+    options[:format] = value.downcase if ["html", "csv"].include? value.downcase
+  end
+
+  on("--output_file output.csv", "specify the output file") do |output_file|
+    options[:output_file] = output_file
+  end
+
+  main do |path|
+    path ||= Dir.pwd
+    options[:format] ||= "csv"
+    out_file = options[:output_file] || File.join(Dir.pwd, ["output", options[:format]].join('.'))
+
+    locations = LocationGrabber.get_gps_data_for_files_recursive(path)
+    rendered = LocationGrabber.get_formatter(options[:format]).render(locations)
+
+    begin
+      File.open(out_file, 'w') { |f| f.write(rendered); f.write("\n") }
+      puts "Success! Check contents of #{out_file}"
+    rescue
+      puts "File #{out_file} could not be written"
+    end
+  end
+
+  go!
+
+end
