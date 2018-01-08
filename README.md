@@ -21,6 +21,22 @@ do things for real with:
 ./bin/location_grabber
 ```
 
+Install as a Gem
+----------------
+
+run:
+
+```
+rake && rake install
+```
+
+then you can run from anywhere
+
+```
+location_grabber --help
+```
+
+
 Running the tests
 -----------------
 
