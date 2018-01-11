@@ -2,8 +2,7 @@ require 'exifr/jpeg'
 require 'erb'
 
 module LocationGrabber
-  VERSION = "1.0"
-  HTML_TEMPLATE_FILE = "output.html.erb"
+  HTML_TEMPLATE_FILE = "report.html.erb"
 
   def self.get_all_files(dir_path)
     return [] if dir_path.nil?

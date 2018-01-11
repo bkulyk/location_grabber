@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+
+<bodu>
+
+  <h1>GPS information for files</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @rows.each do |row| %>
+      <tr>
+        <td><%= row[:file] %></td>
+        <td><%= row[:data]&.latitude %></td>
+        <td><%= row[:data]&.longitude %></td>
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+</bodu>
+</html>

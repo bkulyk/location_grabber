@@ -2,7 +2,8 @@
 
 require 'optparse'
 require 'methadone'
-require_relative '../lib/lib_location_grabber'
+require 'location_grabber/lib_location_grabber'
+require 'location_grabber/version'
 
 class App
 

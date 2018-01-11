@@ -27,7 +27,7 @@ Install as a Gem
 run:
 
 ```
-rake && rake install
+bundle install && rake build && rake install
 ```
 
 then you can run from anywhere
